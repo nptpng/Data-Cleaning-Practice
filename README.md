@@ -46,7 +46,7 @@ The project focuses on solving three major data quality issues:
    - Normalize phone numbers to digits-only format using Regex
 
 3. **Data Validation & Deduplication with SQL**
-   - Use `ROW_NUMBER()` to keep the latest record per applicant
+   - Use `ROW_NUMBER()` to deduplicate records by keeping only the latest submission for each applicant.
    - Use `CASE WHEN` to classify records as:
      - **Verified** → valid email and realistic birth year
      - **Unverified** → requires manual review
