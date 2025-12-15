@@ -1,35 +1,78 @@
-# 🧼 โปรเจกต์ฝึกทำ Data Cleaning (Python & SQL)
+# 🧼 Data Cleaning Practice Project (Python & SQL)
 
-โปรเจกต์นี้เป็นการจำลองระบบจัดการข้อมูลสมัครเรียน เพื่อฝึกฝนทักษะการล้างข้อมูล และการตรวจสอบความถูกต้องของข้อมูล โดยใช้เครื่องมือพื้นฐานที่นิยมใช้ในสายงาน Data
-
-## 🎯 วัตถุประสงค์
-เพื่อจัดการกับข้อมูลดิบที่ "เน่า" หรือมีข้อผิดพลาด ให้กลายเป็นข้อมูลที่สะอาดและพร้อมใช้งาน โดยเน้นการแก้ปัญหา 3 เรื่องหลัก:
-1. **ข้อมูลพิมพ์ผิด/รูปแบบไม่สวย:** เช่น ชื่อมีช่องว่างเกิน หรือเบอร์โทรศัพท์มีเครื่องหมายขีดปนมา
-2. **ข้อมูลซ้ำ (Duplicates):** กรณีที่มีคนกดสมัครซ้ำหลายรอบ
-3. **ข้อมูลผิดปกติ (Anomalies):** เช่น ใส่ปีเกิดเป็นปีในอนาคต หรือใช้อีเมลผิดประเภท
-
-
-
-## 🛠️ เครื่องมือที่ใช้
-* **Python:** ใช้ Library `Pandas` สำหรับจัดการตาราง และ `Faker` สำหรับสุ่มข้อมูลตัวอย่าง
-* **Regex (Regular Expression):** สำหรับจัดการรูปแบบข้อความที่ซับซ้อน เช่น การล้างเบอร์โทรศัพท์
-* **SQL (SQLite):** สำหรับการจัดการฐานข้อมูลและการคัดกรองคนสมัครซ้ำ
-
-## 🏗️ ขั้นตอนการทำงาน
-1. **สร้างข้อมูลจำลอง (Mock Data):** สุ่มรายชื่อ 300 คน โดยตั้งใจใส่ Error ลงไปเพื่อทดสอบโค้ด
-2. **ล้างข้อมูลด้วย Python:** ตัดช่องว่างส่วนเกินออกจากชื่อ และล้างเบอร์โทรศัพท์ให้เหลือเฉพาะตัวเลขล้วน
-3. **ตรวจสอบด้วย SQL:** - ใช้เทคนิค `ROW_NUMBER()` เพื่อเลือกเอาเฉพาะข้อมูลล่าสุดของแต่ละคน (คัดตัวซ้ำทิ้ง)
-   - ใช้ `CASE WHEN` เพื่อแยกสถานะ **Verified** (ข้อมูลถูก) และ **Unverified** (ข้อมูลผิด)
-
-
-
-## 📊 ผลลัพธ์ที่ได้
-เราจะได้ตารางข้อมูลที่พร้อมนำไปใช้งานต่อ โดยมีการระบุสถานะไว้ชัดเจน:
-- **Verified:** อีเมลถูกต้องและปีเกิดอยู่ในช่วงที่เป็นจริง
-- **Unverified:** ข้อมูลยังมีจุดผิดที่ต้องรอการตรวจสอบจากเจ้าหน้าที่
-
-## 🚀 วิธีรันโปรเจกต์
-1. ติดตั้ง Library: `pip install pandas faker`
-2. รันไฟล์: `python main.py` (ส่วนตัวผมรันไฟล์ใน colab)
+This project simulates a student enrollment management system to practice **data cleaning** and **data validation** skills using commonly used data tools in real-world data roles.
 
 ---
+
+## 🎯 Project Objective
+
+The goal of this project is to transform **dirty and unreliable raw data** into **clean, structured, and usable data**.  
+The project focuses on solving three major data quality issues:
+
+1. **Incorrect or inconsistent formatting**
+   - Extra spaces in names
+   - Phone numbers containing dashes or special characters
+
+2. **Duplicate records**
+   - Users submitting the application multiple times
+
+3. **Anomalous or invalid data**
+   - Birth year set in the future
+   - Invalid email formats
+
+---
+
+## 🛠️ Tools & Technologies
+
+- **Python**
+  - `Pandas` for data manipulation
+  - `Faker` for generating mock data
+- **Regular Expressions (Regex)**
+  - Used for cleaning complex text patterns such as phone numbers
+- **SQL (SQLite)**
+  - Data validation and deduplication
+  - Window functions and conditional logic
+
+---
+
+## 🏗️ Workflow
+
+1. **Mock Data Generation**
+   - Generate 300 simulated enrollment records
+   - Intentionally inject data errors for testing purposes
+
+2. **Data Cleaning with Python**
+   - Trim extra spaces from names
+   - Normalize phone numbers to digits-only format using Regex
+
+3. **Data Validation & Deduplication with SQL**
+   - Use `ROW_NUMBER()` to keep the latest record per applicant
+   - Use `CASE WHEN` to classify records as:
+     - **Verified** → valid email and realistic birth year
+     - **Unverified** → requires manual review
+
+---
+
+## 📊 Final Output
+
+The final dataset is clean and analysis-ready, with a clear verification status:
+
+- **Verified**
+  - Valid email format
+  - Birth year within a realistic range
+
+- **Unverified**
+  - Contains data issues that require further inspection
+
+---
+
+
+## 🚀 How to Run the Project
+
+1. Install required libraries:  `pip install pandas faker`
+2. Run the script: `python main.py` (personally i run the script in Colab)
+
+---
+
+
+
